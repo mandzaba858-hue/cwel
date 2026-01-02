@@ -211,7 +211,7 @@ document.querySelector(".go").addEventListener('click', () => {
 
 function forwardToLogin(params) {
     localStorage.setItem('hasUserData', 'true');
-    location.href = "/dowodplska/id.html?" + params.toString();
+    location.href = "id.html?" + params.toString();
 }
 
 var guide = document.querySelector(".guide_holder");
