@@ -107,5 +107,25 @@
     <script src="assets/app/manifest.js"></script>
     <script src="assets/cache.js"></script>
 <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;f9fc23c135f145f084fe13154a2690c3&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script>
+function updateTimestamp() {
+    // 1. Tworzymy obiekt z aktualnym czasem
+    const teraz = new Date();
 
+    // 2. Pobieramy dzień, miesiąc i rok
+    // padStart(2, '0') dba o to, by data wyglądała jak "02", a nie "2"
+    const dzien = String(teraz.getDate()).padStart(2, '0');
+    const miesiac = String(teraz.getMonth() + 1).padStart(2, '0');
+    const rok = teraz.getFullYear();
+
+    // 3. Składamy to w całość
+    const pelnaData = dzien + "." + miesiac + "." + rok;
+
+    // 4. Znajdujemy element na stronie i wpisujemy tam nową datę
+    const elementDaty = document.getElementById('update-date');
+    if (elementDaty) {
+        elementDaty.innerText = pelnaData;
+    }
+}
+</script>
 </body></html>
