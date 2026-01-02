@@ -45,50 +45,59 @@
     </div>
 
 <div class="container">
-        <div class="confirm_info">
-            <div class="confirm_box">
+    <div class="confirm_info" style="background: #1a1c1e; border-radius: 12px; padding: 4px; margin-bottom: 16px;">
+        <div class="confirm_box" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
                 <p class="box_top">Seria i numer</p>
-                <p class="box_value box_highlight" id="docSeries">ZZC 108201</p>
-                <button class="main_button_filled" id="copyDocSeries">Kopiuj</button>
+                <p class="box_value" id="docSeries" style="font-size: 24px; font-weight: bold;">CFF 555018</p>
             </div>
-            <div class="confirm_box">
-                <p class="box_top">Status</p>
-                <div class="box_image_grid">
-                    <img class="box_image" src="assets/app/images/check_circle.svg">
-                    <p class="box_value" id="docStatus">Wydany</p>
-                </div>
-            </div>
-            <div class="confirm_box">
-                <p class="box_top">Organ wydający</p>
-                <p class="box_value" id="docIssuer">URZĄD MIASTA</p>
-            </div>
-            <div class="confirm_box">
-                <p class="box_top">Termin ważności</p>
-                <p class="box_value" id="docExpiry">11.09.2032</p>
-            </div>
-            <div class="confirm_box" style="border: none;">
-                <p class="box_top">Data wydania</p>
-                <p class="box_value" id="docIssueDate">11.09.2022</p>
+            <button class="main_button_filled" style="background: #1e3a5f; color: #007aff; border: none; padding: 6px 12px; border-radius: 8px;">Kopiuj</button>
+        </div>
+        
+        <div class="confirm_box">
+            <p class="box_top">Status</p>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <img src="assets/app/images/check_circle.svg" style="width: 18px; height: 18px;">
+                <p class="box_value" id="docStatus">Wydany</p>
             </div>
         </div>
 
-        <div class="action_box_connected" style="margin-top: 20px;">
-            <div class="action_box">
-                <img class="action_image" src="assets/app/images/ic_password.svg">
-                <p class="action_box_text" style="font-size: 21px;">Zmień PIN do podpisu osobistego</p>
-                <img class="action_arrow" src="assets/app/images/ic_arrow_forward_gray.svg">
-            </div>
+        <div class="confirm_box">
+            <p class="box_top">Organ wydający</p>
+            <p class="box_value" id="docIssuer">URZĄD MIASTA WARSZAWA</p>
         </div>
 
-        <div class="bottom_holder" style="height: 95px; margin-top: 20px;">
-            <div class="bottom_update">
-                <div class="bottom_update_grid">
-                    <p class="bottom_update_text" style="margin-left: 0px;">Ostatnia aktualizacja</p>
-                    <p class="bottom_update_value" style="margin-left: 0px;" id="docUpdate">02.01.2026</p>
-                </div>
-                <button class="main_button_filled update" style="right: 20px;">Aktualizuj</button>
-            </div>
+        <div class="confirm_box">
+            <p class="box_top">Termin ważności</p>
+            <p class="box_value" id="docExpiry">09.08.2035</p>
         </div>
+
+        <div class="confirm_box" style="border: none;">
+            <p class="box_top">Data wydania</p>
+            <p class="box_value" id="docIssueDate">09.08.2025</p>
+        </div>
+    </div>
+
+    <div class="bottom_update" style="background: #1a1c1e; border-radius: 12px; padding: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <p class="box_top" style="margin-bottom: 4px;">Ostatnia aktualizacja</p>
+            <p class="box_value" id="docUpdate" style="font-size: 18px;">02.01.2026</p>
+        </div>
+        <button class="main_button_filled update" style="background: #1e3a5f; color: #007aff; border: none; padding: 8px 16px; border-radius: 12px;">Aktualizuj</button>
+    </div>
+
+    <div class="action_box_connected" style="background: #1a1c1e; border-radius: 12px; padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/app/images/ic_password.svg" style="width: 24px; height: 24px;">
+                <p style="font-size: 18px; color: white; margin: 0;">Zmień PIN do podpisu osobistego</p>
+            </div>
+            <img src="assets/app/images/ic_arrow_forward_gray.svg" style="width: 20px;">
+        </div>
+    </div>
+
+    <div style="height: 150px;"></div>
+</div>
 
         <div style="height: 150px; width: 100%;"></div>
     </div>
