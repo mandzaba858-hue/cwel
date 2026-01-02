@@ -16,6 +16,9 @@
             background: #1a1c20;
             border-radius: 12px;
             margin-bottom: 8px;
+            /* Zablokowanie wysokości, żeby przyciski były równe */
+            height: 60px !important;
+            box-sizing: border-box;
         }
         .action_image {
             width: 24px !important;
@@ -23,11 +26,11 @@
             margin-right: 16px !important;
             object-fit: contain;
         }
-        /* NOWA KLASA DLA KOSZA - powiększamy go tutaj */
+        /* Specjalne ustawienie dla kosza, żeby był wyraźny ale nie psuł układu */
         .trash_icon {
-            width: 32px !important; 
-            height: 32px !important;
-            margin-right: 12px !important; /* Mniejszy margines, żeby wyrównać optycznie */
+            width: 28px !important;
+            height: 28px !important;
+            margin-right: 12px !important;
         }
         .action_box_text {
             flex-grow: 1;
@@ -74,6 +77,7 @@
             <div class="action_box">
                 <img class="action_image trash_icon" src="assets/app/images/trash.png"> 
                 <p class="action_box_text">Usuń dokument</p>
+                <img class="action_arrow" src="assets/app/images/ic_arrow_forward_gray.svg">
             </div>
         </div>
     </div>
