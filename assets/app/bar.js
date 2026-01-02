@@ -27,12 +27,13 @@ if (localStorage.getItem('bottom')){
 
 function sendTo(url, top, bottom){
     if (top) {
-        localStorage.setItem('top', top)
+        localStorage.setItem('top', top);
     }
     if (bottom){
-        localStorage.setItem('bottom', bottom)
+        localStorage.setItem('bottom', bottom);
     }
-    window.location.href = url + "?" + params.toString();
+    // BEZ TEJ LINII PRZYCISKI NIE DZIAŁAJĄ:
+    window.location.href = url + window.location.search;
 }
 }
 
