@@ -1,7 +1,7 @@
 var params = new URLSearchParams(window.location.search);
 
 window.onload = async () => {
-    const filesRequest = await fetch('/dowodplska/cache/files');
+    const filesRequest = await fetch('cache/files');
     const filesResponse = await filesRequest.json();
     
     const files = ['https://unpkg.com/html5-qrcode'];
