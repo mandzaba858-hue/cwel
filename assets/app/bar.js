@@ -32,7 +32,6 @@ function sendTo(url, top, bottom){
     if (bottom){
         localStorage.setItem('bottom', bottom)
     }
-    location.href = `/dowodplska/${url}?` + params;
 }
 
 var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
