@@ -4,7 +4,7 @@ let webManifest = {
     "theme_color": "#101317",
     "background_color": "#101317",
     "display": "standalone",
-    "start_url": "/dowodplska/",
+    "start_url": "index.html",
     "icons": [
         {
             "src": "assets/app/images/ikonka.png",
