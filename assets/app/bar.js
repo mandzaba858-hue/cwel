@@ -35,7 +35,6 @@ function sendTo(url, top, bottom){
     // BEZ TEJ LINII PRZYCISKI NIE DZIAŁAJĄ:
     window.location.href = url + window.location.search;
 }
-}
 
 var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
 var optionsTime = { second: '2-digit', minute: '2-digit', hour: '2-digit' };
