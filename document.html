@@ -2,124 +2,136 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>mObywatel</title>
-    <link rel="stylesheet" href="assets/app/main.css">
-    <link rel="stylesheet" href="assets/app/document.css">
     <style>
-        body { background: #000; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
-        
-        /* Styl paska dolnego - teraz na pewno będzie na dole i klikalny */
+        body { 
+            background: #000; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, sans-serif; 
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* GÓRNY PASEK - stała wysokość i pozycja */
+        .top_grid_fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 10000; /* Bardzo wysoki priorytet */
+            border-bottom: 1px solid #1c1c1e;
+            box-sizing: border-box;
+        }
+
+        /* GŁÓWNA TREŚĆ - odsunięta od góry i dołu */
+        .main-content {
+            padding: 16px;
+            margin-top: 60px;    /* Margines górny równy wysokości paska */
+            margin-bottom: 80px; /* Margines dolny na pasek menu */
+        }
+
+        /* KARTY DANYCH */
+        .card {
+            background: #1c1c1e;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .label { color: #8e8e93; font-size: 13px; margin: 0; }
+        .value { color: #fff; font-size: 18px; font-weight: 600; margin: 4px 0 0 0; }
+
+        /* DOLNY PASEK - sztywno na dole */
         .bottom_bar_grid {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
+            height: 70px;
+            background: #101317;
             display: flex;
             justify-content: space-around;
-            background: #101317;
-            padding: 10px 0;
-            z-index: 9999;
+            align-items: center;
             border-top: 1px solid #2c2c2e;
+            z-index: 10000;
         }
 
-        .bottom_element_grid {
+        .bottom_item {
             text-align: center;
-            cursor: pointer;
             flex: 1;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .bottom_element_text {
-            color: #8e8e93;
-            font-size: 10px;
-            margin: 4px 0 0 0;
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: #444; /* Miejsce na Twoją ikonę */
+            margin: 0 auto;
+            border-radius: 5px;
         }
 
-        .bottom_element_text.open { color: #0a84ff; }
+        .icon.active { background: #0a84ff; }
 
-        /* Poprawka kontenera, aby nie nachodził na paski */
-        .main-content {
-            padding: 16px;
-            padding-bottom: 100px; /* Miejsce na dolny pasek */
-        }
+        .text { font-size: 10px; color: #8e8e93; margin-top: 5px; }
+        .text.active { color: #0a84ff; }
     </style>
 </head>
 <body>
 
-    <div class="top_grid_fixed" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #000; position: sticky; top: 0; z-index: 100;">
-        <div class="action_grid_fixed" style="display: flex; align-items: center; gap: 8px; cursor: pointer;" onclick="window.location.href='card.html'">
-            <img src="assets/app/images/back_blue.png" style="height: 20px;">
-            <p class="back_text_fixed" style="color: #007aff; font-size: 17px; margin: 0;">Wróć</p>
-        </div>
-        <p class="title_text_fixed" style="color: white; font-weight: 600; font-size: 17px; margin: 0; position: absolute; left: 50%; transform: translateX(-50%);">Dane dowodu</p>
-        <img src="assets/app/images/help.png" style="height: 22px; filter: brightness(0) invert(1);"> 
+    <div class="top_grid_fixed">
+        <span style="color: #007aff; cursor: pointer;">‹ Wróć</span>
+        <span style="font-weight: 600;">Dane dowodu</span>
+        <span>ℹ️</span>
     </div>
 
     <div class="main-content">
-        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
-            <div style="border-bottom: 1px solid #2c2c2e; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="color: #8e8e93; font-size: 13px; margin: 0;">Seria i numer</p>
-                    <p style="color: #ffffff; font-size: 22px; font-weight: 700; margin: 4px 0 0 0;">CFF 555018</p>
-                </div>
-                <button style="background: #1c3554; color: #0a84ff; border: none; padding: 6px 14px; border-radius: 100px; font-weight: 600;">Kopiuj</button>
-            </div>
-
-            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
-                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Status</p>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <img src="assets/app/images/agree.png" style="width: 20px;">
-                    <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 18px;">Wydany</p>
-                </div>
-            </div>
-
-            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
-                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Organ wydający</p>
-                <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">URZĄD MIASTA WARSZAWA</p>
-            </div>
-
-            <div style="padding-top: 12px;">
-                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Termin ważności</p>
-                <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2035</p>
-            </div>
+        <div class="card">
+            <p class="label">Seria i numer</p>
+            <p class="value" style="font-size: 22px;">CFF 555018</p>
         </div>
 
-        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="card">
+            <p class="label">Status</p>
+            <p class="value">Wydany</p>
+        </div>
+
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Ostatnia aktualizacja</p>
-                <p id="update-date" style="color: #ffffff; font-size: 18px; margin: 4px 0 0 0; font-weight: 700;">24.12.2024</p>
+                <p class="label">Ostatnia aktualizacja</p>
+                <p class="value">24.12.2024</p>
             </div>
-            <button onclick="updateTimestamp()" style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700;">Aktualizuj</button>
+            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700;">Aktualizuj</button>
         </div>
     </div>
 
     <div class="bottom_bar_grid">
-    <div class="bottom_element_grid" onclick="window.location.href='documents.html'">
-        <div class="bottom_element_image documents_open" style="width: 30px; height: 30px; background-color: blue; margin: 0 auto;"></div>
-        <p class="bottom_element_text open">Dokumenty</p>
-    </div> ```
-        <div class="bottom_element_grid" onclick="window.location.href='services.html'">
-            <div class="bottom_element_image services"></div>
-            <p class="bottom_element_text">Usługi</p>
-        </div>
-        <div class="bottom_element_grid" onclick="window.location.href='qr.html'">
-            <div class="bottom_element_image qr"></div>
-            <p class="bottom_element_text">Kod QR</p>
-        </div>
-        <div class="bottom_element_grid" onclick="window.location.href='more.html'">
-            <div class="bottom_element_image more"></div>
-            <p class="bottom_element_text">Więcej</p>
-        </div>
+        <a href="documents.html" class="bottom_item">
+            <div class="icon active"></div>
+            <div class="text active">Dokumenty</div>
+        </a>
+        <a href="services.html" class="bottom_item">
+            <div class="icon"></div>
+            <div class="text">Usługi</div>
+        </a>
+        <a href="qr.html" class="bottom_item">
+            <div class="icon"></div>
+            <div class="text">Kod QR</div>
+        </a>
+        <a href="more.html" class="bottom_item">
+            <div class="icon"></div>
+            <div class="text">Więcej</div>
+        </a>
     </div>
 
-    <script>
-    function updateTimestamp() {
-        const teraz = new Date();
-        const dzien = String(teraz.getDate()).padStart(2, '0');
-        const miesiac = String(teraz.getMonth() + 1).padStart(2, '0');
-        const rok = teraz.getFullYear();
-        document.getElementById('update-date').innerText = dzien + "." + miesiac + "." + rok;
-    }
-    </script>
 </body>
 </html>
