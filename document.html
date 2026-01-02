@@ -9,7 +9,7 @@
             background: #000; 
             margin: 0; 
             padding: 0; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            font-family: -apple-system, sans-serif; 
             color: white;
             overflow-x: hidden;
         }
@@ -30,7 +30,7 @@
             box-sizing: border-box;
         }
 
-        .back-button { color: #0a84ff; cursor: pointer; text-decoration: none; font-size: 17px; display: flex; align-items: center; }
+        .back-button { color: #0a84ff; cursor: pointer; font-size: 17px; display: flex; align-items: center; gap: 5px; }
 
         /* GŁÓWNA TREŚĆ */
         .main-content {
@@ -39,8 +39,6 @@
             margin-bottom: 90px;
         }
 
-        .page-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
-
         /* KARTY DANYCH */
         .card {
             background: #1c1c1e;
@@ -48,24 +46,37 @@
             padding: 16px;
             margin-bottom: 12px;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .label { color: #8e8e93; font-size: 13px; margin: 0; text-transform: none; }
+        .label { color: #8e8e93; font-size: 13px; margin: 0; }
         .value { color: #fff; font-size: 18px; font-weight: 600; margin: 4px 0 0 0; }
         
+        /* Strzałka po prawej (nieklikalna wizualnie) */
+        .arrow_right {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background-image: url('assets/app/images/arrow_right.png'); /* Upewnij się, że nazwa pliku się zgadza */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+        }
+
         .copy-btn { 
             position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
-            background: #2c2c2e; color: #0a84ff; border: none; padding: 6px 12px;
-            border-radius: 20px; font-size: 13px; font-weight: 600;
+            background: #1c3554; color: #0a84ff; border: none; padding: 6px 14px;
+            border-radius: 20px; font-size: 13px; font-weight: 700;
         }
 
-        .status-badge { color: #32d74b; display: flex; align-items: center; gap: 6px; font-weight: 600; }
-        .status-icon { width: 14px; height: 14px; background: #32d74b; border-radius: 50%; display: inline-block; }
-
-        .action-card {
-            display: flex; justify-content: space-between; align-items: center;
-            background: #1c1c1e; border-radius: 12px; padding: 16px; margin-top: 20px;
-        }
+        /* Sekcja STATUS z agree.png */
+        .status-container { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+        .agree-icon { width: 18px; height: 18px; }
 
         /* DOLNY PASEK */
         .bottom_bar_grid {
@@ -80,20 +91,19 @@
             align-items: center;
             border-top: 1px solid #2c2c2e;
             z-index: 10000;
-            padding-bottom: env(safe-area-inset-bottom);
         }
 
         .bottom_item { text-align: center; flex: 1; cursor: pointer; }
-        .icon { width: 24px; height: 24px; margin: 0 auto; background-size: contain; background-repeat: no-repeat; opacity: 0.5; }
-        .icon.active { opacity: 1; filter: brightness(1.5); }
+        .icon { width: 24px; height: 24px; margin: 0 auto; background-size: contain; background-repeat: no-repeat; }
         .text { font-size: 10px; color: #8e8e93; margin-top: 5px; }
-        .text.active { color: #0a84ff; }
+        .active-text { color: #0a84ff; }
 
-        /* Klasy ikon (muszą odpowiadać plikom w assets/app/images/) */
-        .ico-docs { background-image: url('assets/app/images/documents.png'); }
+        /* Ikony menu */
+        .ico-docs { background-image: url('assets/app/images/documents_open.png'); }
         .ico-serv { background-image: url('assets/app/images/services.png'); }
         .ico-qr { background-image: url('assets/app/images/qr.png'); }
         .ico-more { background-image: url('assets/app/images/more.png'); }
+
     </style>
 </head>
 <body>
@@ -101,7 +111,7 @@
     <div class="top_grid_fixed">
         <div class="back-button" onclick="sendTo('documents.html')">‹ Wróć</div>
         <div style="font-weight: 600; font-size: 17px;">Dane dowodu osobistego</div>
-        <div style="font-size: 20px;">ⓘ</div>
+        <div style="font-size: 20px; color: #0a84ff;">?</div>
     </div>
 
     <div class="main-content">
@@ -113,47 +123,49 @@
 
         <div class="card">
             <p class="label">Status</p>
-            <div class="status-badge" style="margin-top: 4px;">
-                <span class="status-icon"></span> Wydany
+            <div class="status-container">
+                <img src="assets/app/images/agree.png" class="agree-icon">
+                <span style="font-weight: 600; font-size: 18px;">Wydany</span>
             </div>
         </div>
 
         <div class="card">
             <p class="label">Organ wydający</p>
             <p class="value">URZĄD MIASTA WARSZAWA</p>
+            <div class="arrow_right"></div>
         </div>
 
         <div class="card">
             <p class="label">Termin ważności</p>
             <p class="value" id="docExpiryDate">09.08.2035</p>
+            <div class="arrow_right"></div>
         </div>
 
         <div class="card">
             <p class="label">Data wydania</p>
             <p class="value" id="docIssuedDate">09.08.2025</p>
+            <div class="arrow_right"></div>
         </div>
 
-        <div class="action-card">
+        <div class="card" style="flex-direction: row; justify-content: space-between; align-items: center;">
             <div>
                 <p class="label">Ostatnia aktualizacja</p>
-                <p class="value" id="docUpdateDate" style="font-size: 16px;">24.12.2024</p>
+                <p class="value" id="docUpdateDate">24.12.2024</p>
             </div>
-            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px;">Aktualizuj</button>
+            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700;">Aktualizuj</button>
         </div>
 
-        <div class="action-card" style="margin-top: 12px; cursor: pointer;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div style="font-size: 24px;">🪪</div>
-                <p class="value" style="font-size: 16px;">Zmień PIN do podpisu osobistego</p>
-            </div>
-            <span style="color: #444; font-size: 20px;">›</span>
+        <div class="card" style="margin-top: 20px; flex-direction: row; align-items: center; gap: 15px;">
+            <div style="font-size: 24px;">🔑</div>
+            <p class="value" style="font-size: 16px; margin: 0;">Zmień PIN do podpisu osobistego</p>
+            <div class="arrow_right" style="opacity: 0.6;"></div>
         </div>
     </div>
 
     <div class="bottom_bar_grid">
         <div class="bottom_item" onclick="sendTo('documents.html')">
-            <div class="icon ico-docs active"></div>
-            <div class="text active">Dokumenty</div>
+            <div class="icon ico-docs"></div>
+            <div class="text active-text">Dokumenty</div>
         </div>
         <div class="bottom_item" onclick="sendTo('services.html')">
             <div class="icon ico-serv"></div>
