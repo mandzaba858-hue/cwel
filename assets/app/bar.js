@@ -32,8 +32,9 @@ function sendTo(url, top, bottom){
     if (bottom){
         localStorage.setItem('bottom', bottom);
     }
-    // BEZ TEJ LINII PRZYCISKI NIE DZIAŁAJĄ:
-    window.location.href = url + window.location.search;
+    
+    // TA LINIA ZOSTAŁA POPRAWIONA, ABY DZIAŁAŁA NA GITHUBIE W FOLDERZE /cwel/
+    window.location.href = "/cwel/" + url + window.location.search;
 }
 
 var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
