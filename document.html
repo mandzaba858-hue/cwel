@@ -9,12 +9,12 @@
             background: #000; 
             margin: 0; 
             padding: 0; 
-            font-family: -apple-system, sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             color: white;
             overflow-x: hidden;
         }
 
-        /* GÓRNY PASEK - stała wysokość i pozycja */
+        /* GÓRNY PASEK */
         .top_grid_fixed {
             position: fixed;
             top: 0;
@@ -26,17 +26,20 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 16px;
-            z-index: 10000; /* Bardzo wysoki priorytet */
-            border-bottom: 1px solid #1c1c1e;
+            z-index: 10000;
             box-sizing: border-box;
         }
 
-        /* GŁÓWNA TREŚĆ - odsunięta od góry i dołu */
+        .back-button { color: #0a84ff; cursor: pointer; text-decoration: none; font-size: 17px; display: flex; align-items: center; }
+
+        /* GŁÓWNA TREŚĆ */
         .main-content {
             padding: 16px;
-            margin-top: 60px;    /* Margines górny równy wysokości paska */
-            margin-bottom: 80px; /* Margines dolny na pasek menu */
+            margin-top: 60px;
+            margin-bottom: 90px;
         }
+
+        .page-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
 
         /* KARTY DANYCH */
         .card {
@@ -44,94 +47,132 @@
             border-radius: 12px;
             padding: 16px;
             margin-bottom: 12px;
+            position: relative;
         }
 
-        .label { color: #8e8e93; font-size: 13px; margin: 0; }
+        .label { color: #8e8e93; font-size: 13px; margin: 0; text-transform: none; }
         .value { color: #fff; font-size: 18px; font-weight: 600; margin: 4px 0 0 0; }
+        
+        .copy-btn { 
+            position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+            background: #2c2c2e; color: #0a84ff; border: none; padding: 6px 12px;
+            border-radius: 20px; font-size: 13px; font-weight: 600;
+        }
 
-        /* DOLNY PASEK - sztywno na dole */
+        .status-badge { color: #32d74b; display: flex; align-items: center; gap: 6px; font-weight: 600; }
+        .status-icon { width: 14px; height: 14px; background: #32d74b; border-radius: 50%; display: inline-block; }
+
+        .action-card {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #1c1c1e; border-radius: 12px; padding: 16px; margin-top: 20px;
+        }
+
+        /* DOLNY PASEK */
         .bottom_bar_grid {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 70px;
+            height: 75px;
             background: #101317;
             display: flex;
             justify-content: space-around;
             align-items: center;
             border-top: 1px solid #2c2c2e;
             z-index: 10000;
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
-        .bottom_item {
-            text-align: center;
-            flex: 1;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .icon {
-            width: 24px;
-            height: 24px;
-            background: #444; /* Miejsce na Twoją ikonę */
-            margin: 0 auto;
-            border-radius: 5px;
-        }
-
-        .icon.active { background: #0a84ff; }
-
+        .bottom_item { text-align: center; flex: 1; cursor: pointer; }
+        .icon { width: 24px; height: 24px; margin: 0 auto; background-size: contain; background-repeat: no-repeat; opacity: 0.5; }
+        .icon.active { opacity: 1; filter: brightness(1.5); }
         .text { font-size: 10px; color: #8e8e93; margin-top: 5px; }
         .text.active { color: #0a84ff; }
+
+        /* Klasy ikon (muszą odpowiadać plikom w assets/app/images/) */
+        .ico-docs { background-image: url('assets/app/images/documents.png'); }
+        .ico-serv { background-image: url('assets/app/images/services.png'); }
+        .ico-qr { background-image: url('assets/app/images/qr.png'); }
+        .ico-more { background-image: url('assets/app/images/more.png'); }
     </style>
 </head>
 <body>
 
     <div class="top_grid_fixed">
-        <span style="color: #007aff; cursor: pointer;">‹ Wróć</span>
-        <span style="font-weight: 600;">Dane dowodu</span>
-        <span>ℹ️</span>
+        <div class="back-button" onclick="sendTo('documents.html')">‹ Wróć</div>
+        <div style="font-weight: 600; font-size: 17px;">Dane dowodu osobistego</div>
+        <div style="font-size: 20px;">ⓘ</div>
     </div>
 
     <div class="main-content">
         <div class="card">
             <p class="label">Seria i numer</p>
-            <p class="value" style="font-size: 22px;">CFF 555018</p>
+            <p class="value" id="seriesAndNumber">CFF 555018</p>
+            <button class="copy-btn">Kopiuj</button>
         </div>
 
         <div class="card">
             <p class="label">Status</p>
-            <p class="value">Wydany</p>
+            <div class="status-badge" style="margin-top: 4px;">
+                <span class="status-icon"></span> Wydany
+            </div>
         </div>
 
-        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card">
+            <p class="label">Organ wydający</p>
+            <p class="value">URZĄD MIASTA WARSZAWA</p>
+        </div>
+
+        <div class="card">
+            <p class="label">Termin ważności</p>
+            <p class="value" id="docExpiryDate">09.08.2035</p>
+        </div>
+
+        <div class="card">
+            <p class="label">Data wydania</p>
+            <p class="value" id="docIssuedDate">09.08.2025</p>
+        </div>
+
+        <div class="action-card">
             <div>
                 <p class="label">Ostatnia aktualizacja</p>
-                <p class="value">24.12.2024</p>
+                <p class="value" id="docUpdateDate" style="font-size: 16px;">24.12.2024</p>
             </div>
-            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700;">Aktualizuj</button>
+            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px;">Aktualizuj</button>
+        </div>
+
+        <div class="action-card" style="margin-top: 12px; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="font-size: 24px;">🪪</div>
+                <p class="value" style="font-size: 16px;">Zmień PIN do podpisu osobistego</p>
+            </div>
+            <span style="color: #444; font-size: 20px;">›</span>
         </div>
     </div>
 
     <div class="bottom_bar_grid">
-        <a href="documents.html" class="bottom_item">
-            <div class="icon active"></div>
+        <div class="bottom_item" onclick="sendTo('documents.html')">
+            <div class="icon ico-docs active"></div>
             <div class="text active">Dokumenty</div>
-        </a>
-        <a href="services.html" class="bottom_item">
-            <div class="icon"></div>
+        </div>
+        <div class="bottom_item" onclick="sendTo('services.html')">
+            <div class="icon ico-serv"></div>
             <div class="text">Usługi</div>
-        </a>
-        <a href="qr.html" class="bottom_item">
-            <div class="icon"></div>
+        </div>
+        <div class="bottom_item" onclick="sendTo('qr.html')">
+            <div class="icon ico-qr"></div>
             <div class="text">Kod QR</div>
-        </a>
-        <a href="more.html" class="bottom_item">
-            <div class="icon"></div>
+        </div>
+        <div class="bottom_item" onclick="sendTo('more.html')">
+            <div class="icon ico-more"></div>
             <div class="text">Więcej</div>
-        </a>
+        </div>
     </div>
+
+    <script src="assets/app/bar.js"></script>
+    <script src="assets/app/document.js"></script>
+    <script src="assets/app/manifest.js"></script>
+    <script src="assets/app/cache.js"></script>
 
 </body>
 </html>
