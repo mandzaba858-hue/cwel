@@ -6,7 +6,7 @@ window.goToCreator = function() {
     localStorage.removeItem('birthDay');
     localStorage.removeItem('givenDate');
     localStorage.removeItem('expiryDate');
-    window.location.href = '/dowodplska/index.html?creator=1';
+    window.location.href = 'index.html?creator=1';
 };
 
 
