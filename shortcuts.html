@@ -23,6 +23,12 @@
             margin-right: 16px !important;
             object-fit: contain;
         }
+        /* NOWA KLASA DLA KOSZA - powiększamy go tutaj */
+        .trash_icon {
+            width: 32px !important; 
+            height: 32px !important;
+            margin-right: 12px !important; /* Mniejszy margines, żeby wyrównać optycznie */
+        }
         .action_box_text {
             flex-grow: 1;
             color: white;
@@ -64,12 +70,13 @@
             </div>
         </div>
 
-<div class="delete_action" style="margin-top: 24px;">
-    <div class="action_box">
-        <img class="action_image" src="assets/app/images/trash.png"> 
-        <p class="action_box_text">Usuń dokument</p>
+        <div class="delete_action" style="margin-top: 24px;">
+            <div class="action_box">
+                <img class="action_image trash_icon" src="assets/app/images/trash.png"> 
+                <p class="action_box_text">Usuń dokument</p>
+            </div>
+        </div>
     </div>
-</div>
 
     <div class="bottom_bar">
         <div class="bottom_bar_grid">
