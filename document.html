@@ -15,91 +15,92 @@
     <meta name="mobile-web-app-capable" content="yes">
 <link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
 <body>
-    <div class="top_grid_fixed">
-        <div class="action_grid_fixed">
-            <img src="assets/app/images/back_blue.png" class="back_img_fixed">
-            <p onclick="sendTo('card.html')" class="back_text_fixed">Wróć</p>
+    <div class="top_grid_fixed" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #000; position: sticky; top: 0; z-index: 100;">
+        <div class="action_grid_fixed" style="display: flex; align-items: center; gap: 8px; cursor: pointer;" onclick="window.location.href='card.html'">
+            <img src="assets/app/images/back_blue.png" style="height: 20px;">
+            <p class="back_text_fixed" style="color: #007aff; font-size: 17px; margin: 0;">Wróć</p>
         </div>
-        <p class="title_text_fixed" style="width: max-content;">Dane dowodu osobistego</p>
-        <img src="assets/app/images/help.png" class="help_img_fixed">
-    </div>
+        <p class="title_text_fixed" style="color: white; font-weight: 600; font-size: 17px; margin: 0; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap;">Dane dowodu osobistego</p>
+        <img src="assets/app/images/help.png" style="height: 22px; filter: brightness(0) invert(1);"> </div>
+
     <div class="bottom_bar">
         <div class="bottom_bar_grid">
-            <div class="bottom_element_grid" send="documents.html">
+            <div class="bottom_element_grid">
                 <div class="bottom_element_image documents_open"></div>
                 <p class="bottom_element_text open">Dokumenty</p>
             </div>
-            <div class="bottom_element_grid" send="services.html">
+            <div class="bottom_element_grid">
                 <div class="bottom_element_image services"></div>
                 <p class="bottom_element_text">Usługi</p>
             </div>
-            <div class="bottom_element_grid" send="qr.html">
+            <div class="bottom_element_grid">
                 <div class="bottom_element_image qr"></div>
                 <p class="bottom_element_text">Kod QR</p>
             </div>
-            <div class="bottom_element_grid" send="more.html">
+            <div class="bottom_element_grid">
                 <div class="bottom_element_image more"></div>
                 <p class="bottom_element_text">Więcej</p>
             </div>
         </div>
     </div>
 
-<div class="container" style="padding: 16px; overflow-y: auto !important;">
-    
-    <div style="background-color: #1a1c1e; border-radius: 16px; padding: 12px; margin-bottom: 12px;">
-        <div class="confirm_box" style="border-bottom: 1px solid #2c2e30; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="container" style="padding: 16px; background: #000; min-height: 100vh;">
+        
+        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+            <div style="border-bottom: 1px solid #2c2c2e; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <p style="color: #8e8e93; font-size: 13px; margin: 0;">Seria i numer</p>
+                    <p style="color: white; font-size: 22px; font-weight: 700; margin: 4px 0 0 0; font-family: sans-serif;">CFF 555018</p>
+                </div>
+                <button style="background: #1c3554; color: #0a84ff; border: none; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 14px;">Kopiuj</button>
+            </div>
+
+            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Status</p>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+                    <img src="assets/app/images/check_circle.svg" style="width: 18px; filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);">
+                    <p style="color: white; margin: 0; font-weight: 600; font-size: 18px;">Wydany</p>
+                </div>
+            </div>
+
+            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Organ wydający</p>
+                <p style="color: white; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">URZĄD MIASTA WARSZAWA</p>
+            </div>
+
+            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Termin ważności</p>
+                <p style="color: white; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2035</p>
+            </div>
+
+            <div style="padding-top: 12px;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Data wydania</p>
+                <p style="color: white; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2025</p>
+            </div>
+        </div>
+
+        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <p class="box_top" style="color: #8e8e93; font-size: 13px; margin: 0;">Seria i numer</p>
-                <p class="box_value" style="font-size: 20px; font-weight: 600; margin: 4px 0 0 0;">CFF 555018</p>
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Ostatnia aktualizacja</p>
+                <p style="color: #ffffff !important; font-size: 18px; margin: 4px 0 0 0; font-weight: 600;">24.12.2024</p>
             </div>
-            <button style="background: #1e3a5f; color: #007aff; border: none; padding: 6px 14px; border-radius: 10px; font-weight: 600;">Kopiuj</button>
+            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 600;">Aktualizuj</button>
         </div>
 
-        <div class="confirm_box" style="border-bottom: 1px solid #2c2e30; padding: 12px 0;">
-            <p class="box_top" style="color: #8e8e93; font-size: 13px; margin: 0;">Status</p>
-            <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
-                <img src="assets/app/images/check_circle.svg" style="width: 18px; height: 18px;">
-                <p class="box_value" style="margin: 0; font-weight: 500;">Wydany</p>
+        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 18px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <img src="assets/app/images/ic_password.svg" style="width: 24px; filter: brightness(0) invert(1);">
+                <p style="font-size: 16px; color: white; margin: 0; font-weight: 500;">Zmień PIN do podpisu osobistego</p>
             </div>
+            <img src="assets/app/images/ic_arrow_forward_gray.svg" style="width: 18px; filter: brightness(0.5);">
         </div>
 
-        <div class="confirm_box" style="border-bottom: 1px solid #2c2e30; padding: 12px 0;">
-            <p class="box_top" style="color: #8e8e93; font-size: 13px; margin: 0;">Organ wydający</p>
-            <p class="box_value" style="margin: 4px 0 0 0; font-weight: 500;">URZĄD MIASTA WARSZAWA</p>
-        </div>
-
-        <div class="confirm_box" style="border-bottom: 1px solid #2c2e30; padding: 12px 0;">
-            <p class="box_top" style="color: #8e8e93; font-size: 13px; margin: 0;">Termin ważności</p>
-            <p class="box_value" style="margin: 4px 0 0 0; font-weight: 500;">09.08.2035</p>
-        </div>
-
-        <div class="confirm_box" style="padding-top: 12px;">
-            <p class="box_top" style="color: #8e8e93; font-size: 13px; margin: 0;">Data wydania</p>
-            <p class="box_value" style="margin: 4px 0 0 0; font-weight: 500;">09.08.2025</p>
-        </div>
+        <div style="height: 140px;"></div>
     </div>
-
-    <div style="background-color: #1a1c1e; border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <p style="color: #8e8e93; font-size: 13px; margin: 0;">Ostatnia aktualizacja</p>
-            <p style="font-size: 17px; margin: 4px 0 0 0; font-weight: 500;">24.12.2024</p>
-        </div>
-        <button style="background: #1e3a5f; color: #007aff; border: none; padding: 8px 16px; border-radius: 12px; font-weight: 600;">Aktualizuj</button>
-    </div>
-
-    <div style="background-color: #1a1c1e; border-radius: 16px; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 14px;">
-            <img src="assets/app/images/ic_password.svg" style="width: 22px; height: 22px;">
-            <p style="font-size: 16px; color: white; margin: 0;">Zmień PIN do podpisu osobistego</p>
-        </div>
-        <img src="assets/app/images/ic_arrow_forward_gray.svg" style="width: 16px;">
-    </div>
-
-    <div style="height: 120px;"></div>
-</div>
 
     <script src="assets/app/document.js"></script>
     <script src="assets/app/bar.js"></script>
+</body>
     <script src="assets/app/manifest.js"></script>
     <script src="assets/cache.js"></script>
 <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;f9fc23c135f145f084fe13154a2690c3&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
