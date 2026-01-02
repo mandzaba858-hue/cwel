@@ -28,9 +28,19 @@
             padding: 0 16px;
             z-index: 10000;
             box-sizing: border-box;
+            border-bottom: 1px solid #1c1c1e;
         }
 
-        .back-button { color: #0a84ff; cursor: pointer; font-size: 17px; display: flex; align-items: center; gap: 5px; }
+        .back-button { color: #0a84ff; cursor: pointer; font-size: 17px; display: flex; align-items: center; }
+
+        .info-icon {
+            width: 22px;
+            height: 22px;
+            background-image: url('assets/app/images/info.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
 
         /* GŁÓWNA TREŚĆ */
         .main-content {
@@ -46,35 +56,31 @@
             padding: 16px;
             margin-bottom: 12px;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .label { color: #8e8e93; font-size: 13px; margin: 0; }
         .value { color: #fff; font-size: 18px; font-weight: 600; margin: 4px 0 0 0; }
         
-        /* Strzałka po prawej (nieklikalna wizualnie) */
-        .arrow_right {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 15px;
-            height: 15px;
-            background-image: url('assets/app/images/arrow_right.png'); /* Upewnij się, że nazwa pliku się zgadza */
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.3;
-        }
-
         .copy-btn { 
             position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
             background: #1c3554; color: #0a84ff; border: none; padding: 6px 14px;
             border-radius: 20px; font-size: 13px; font-weight: 700;
         }
 
-        /* Sekcja STATUS z agree.png */
+        .arrow_right {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background-image: url('assets/app/images/arrow_right.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+
+        /* Sekcja STATUS */
         .status-container { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
         .agree-icon { width: 18px; height: 18px; }
 
@@ -98,7 +104,6 @@
         .text { font-size: 10px; color: #8e8e93; margin-top: 5px; }
         .active-text { color: #0a84ff; }
 
-        /* Ikony menu */
         .ico-docs { background-image: url('assets/app/images/documents_open.png'); }
         .ico-serv { background-image: url('assets/app/images/services.png'); }
         .ico-qr { background-image: url('assets/app/images/qr.png'); }
@@ -111,7 +116,7 @@
     <div class="top_grid_fixed">
         <div class="back-button" onclick="sendTo('documents.html')">‹ Wróć</div>
         <div style="font-weight: 600; font-size: 17px;">Dane dowodu osobistego</div>
-        <div style="font-size: 20px; color: #0a84ff;">?</div>
+        <div class="info-icon"></div>
     </div>
 
     <div class="main-content">
@@ -147,7 +152,7 @@
             <div class="arrow_right"></div>
         </div>
 
-        <div class="card" style="flex-direction: row; justify-content: space-between; align-items: center;">
+        <div class="card" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
             <div>
                 <p class="label">Ostatnia aktualizacja</p>
                 <p class="value" id="docUpdateDate">24.12.2024</p>
@@ -155,10 +160,9 @@
             <button style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700;">Aktualizuj</button>
         </div>
 
-        <div class="card" style="margin-top: 20px; flex-direction: row; align-items: center; gap: 15px;">
-            <div style="font-size: 24px;">🔑</div>
-            <p class="value" style="font-size: 16px; margin: 0;">Zmień PIN do podpisu osobistego</p>
-            <div class="arrow_right" style="opacity: 0.6;"></div>
+        <div class="card" style="margin-top: 20px; display: flex; flex-direction: row; align-items: center; gap: 15px;">
+            <img src="assets/app/images/key.png" style="width: 24px; height: 24px;"> <p class="value" style="font-size: 16px; margin: 0;">Zmień PIN do podpisu osobistego</p>
+            <div class="arrow_right"></div>
         </div>
     </div>
 
