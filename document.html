@@ -23,25 +23,27 @@
         <p class="title_text_fixed" style="color: white; font-weight: 600; font-size: 17px; margin: 0; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap;">Dane dowodu osobistego</p>
         <img src="assets/app/images/help.png" style="height: 22px; filter: brightness(0) invert(1);"> </div>
 
-    <div class="bottom_bar">
-        <div class="bottom_bar_grid">
-            <div class="bottom_element_grid">
-                <div class="bottom_element_image documents_open"></div>
-                <p class="bottom_element_text open">Dokumenty</p>
-            </div>
-            <div class="bottom_element_grid">
-                <div class="bottom_element_image services"></div>
-                <p class="bottom_element_text">Usługi</p>
-            </div>
-            <div class="bottom_element_grid">
-                <div class="bottom_element_image qr"></div>
-                <p class="bottom_element_text">Kod QR</p>
-            </div>
-            <div class="bottom_element_grid">
-                <div class="bottom_element_image more"></div>
-                <p class="bottom_element_text">Więcej</p>
-            </div>
-        </div>
+<div class="bottom_bar_grid">
+    <div class="bottom_element_grid" onclick="window.location.href='index.html'" style="cursor: pointer;">
+        <div class="bottom_element_image documents_open"></div>
+        <p class="bottom_element_text open" style="font-weight: 600;">Dokumenty</p>
+    </div>
+
+    <div class="bottom_element_grid" onclick="window.location.href='services.html'" style="cursor: pointer;">
+        <div class="bottom_element_image services"></div>
+        <p class="bottom_element_text" style="font-weight: 600;">Usługi</p>
+    </div>
+
+    <div class="bottom_element_grid" onclick="window.location.href='qr_code.html'" style="cursor: pointer;">
+        <div class="bottom_element_image qr"></div>
+        <p class="bottom_element_text" style="font-weight: 600;">Kod QR</p>
+    </div>
+
+    <div class="bottom_element_grid" onclick="window.location.href='more_options.html'" style="cursor: pointer;">
+        <div class="bottom_element_image more"></div>
+        <p class="bottom_element_text" style="font-weight: 600;">Więcej</p>
+    </div>
+</div>
     </div>
 
    <div class="container" style="padding: 16px; background: #000; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
