@@ -1,19 +1,28 @@
-<html><head><link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiIzEwMTMxNyIsImJhY2tncm91bmRfY29sb3IiOiIjMTAxMzE3IiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
+<!DOCTYPE html>
+<html>
+<head>
     <base href="/cwel/">
     <title>mObywatel</title>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
     <link rel="stylesheet" href="assets/app/main.css">
     <link rel="stylesheet" href="assets/app/document.css">
-    <link rel="icon" type="image/x-icon" href="assets/app/images/ikonka.png">
-    <link rel="apple-touch-icon" href="assets/app/images/ikonka.png">
-    <link rel="shortcut icon" href="assets/app/images/ikonka.png">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-<link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
+    <style>
+        body { background: #000; margin: 0; padding: 0; }
+        /* Naprawa paska na dole, aby zawsze był na wierzchu i na dole */
+        .bottom_bar_grid {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #101317;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+    </style>
+</head>
 <body>
     <div class="top_grid_fixed" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #000; position: sticky; top: 0; z-index: 100;">
         <div class="action_grid_fixed" style="display: flex; align-items: center; gap: 8px; cursor: pointer;" onclick="window.location.href='card.html'">
@@ -21,111 +30,98 @@
             <p class="back_text_fixed" style="color: #007aff; font-size: 17px; margin: 0;">Wróć</p>
         </div>
         <p class="title_text_fixed" style="color: white; font-weight: 600; font-size: 17px; margin: 0; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap;">Dane dowodu osobistego</p>
-        <img src="assets/app/images/help.png" style="height: 22px; filter: brightness(0) invert(1);"> </div>
-
-<div class="bottom_bar_grid" style="position: relative; z-index: 9999;">
-    <div class="bottom_element_grid" onclick="window.location.href='documents.html'" style="cursor: pointer;">
-        <div class="bottom_element_image documents_open"></div>
-        <p class="bottom_element_text open" style="font-weight: 600;">Dokumenty</p>
-    </div>
-    <div class="bottom_element_grid" onclick="window.location.href='services.html'" style="cursor: pointer;">
-        <div class="bottom_element_image services"></div>
-        <p class="bottom_element_text" style="font-weight: 600;">Usługi</p>
-    </div>
-    <div class="bottom_element_grid" onclick="window.location.href='qr.html'" style="cursor: pointer;">
-        <div class="bottom_element_image qr"></div>
-        <p class="bottom_element_text" style="font-weight: 600;">Kod QR</p>
-    </div>
-    <div class="bottom_element_grid" onclick="window.location.href='more.html'" style="cursor: pointer;">
-        <div class="bottom_element_image more"></div>
-        <p class="bottom_element_text" style="font-weight: 600;">Więcej</p>
-    </div>
-</div>
-</div>
+        <img src="assets/app/images/help.png" style="height: 22px; filter: brightness(0) invert(1);">
     </div>
 
- <div class="container" style="padding: 16px; background: #000; font-family: -apple-system, sans-serif;">
-    
-    <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
-        <div style="border-bottom: 1px solid #2c2c2e; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start;">
+    <div class="container" style="padding: 16px; background: #000; font-family: -apple-system, sans-serif;">
+        
+        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+            <div style="border-bottom: 1px solid #2c2c2e; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <p style="color: #8e8e93; font-size: 13px; margin: 0;">Seria i numer</p>
+                    <p style="color: #ffffff; font-size: 22px; font-weight: 700; margin: 4px 0 0 0;">CFF 555018</p>
+                </div>
+                <button style="background: #1c3554; color: #0a84ff; border: none; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 14px;">Kopiuj</button>
+            </div>
+
+            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Status</p>
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                    <img src="assets/app/images/agree.png" style="width: 20px; height: 20px;">
+                    <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 18px;">Wydany</p>
+                </div>
+            </div>
+
+            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Organ wydający</p>
+                <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">URZĄD MIASTA WARSZAWA</p>
+            </div>
+
+            <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Termin ważności</p>
+                <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2035</p>
+            </div>
+
+            <div style="padding-top: 12px;">
+                <p style="color: #8e8e93; font-size: 13px; margin: 0;">Data wydania</p>
+                <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2025</p>
+            </div>
+        </div>
+
+        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <p style="color: #8e8e93; font-size: 13px; margin: 0; text-transform: none;">Seria i numer</p>
-                <p style="color: #ffffff; font-size: 22px; font-weight: 700; margin: 4px 0 0 0;">CFF 555018</p>
+                <p style="color: #8e8e93; font-size: 13px; margin: 0; font-weight: 500;">Ostatnia aktualizacja</p>
+                <p id="update-date" style="color: #ffffff !important; font-size: 18px; margin: 4px 0 0 0; font-weight: 700;">24.12.2024</p>
             </div>
-            <button style="background: #1c3554; color: #0a84ff; border: none; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 14px;">Kopiuj</button>
+            <button onclick="updateTimestamp()" style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; cursor: pointer;">Aktualizuj</button>
         </div>
 
-        <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
-            <p style="color: #8e8e93; font-size: 13px; margin: 0;">Status</p>
-            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
-                <img src="assets/app/images/agree.png" style="width: 20px; height: 20px;" alt="Status">
-                <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 18px;">Wydany</p>
+        <div style="background-color: #1c1c1e; border-radius: 12px; padding: 18px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM15.1 8H8.9V6C8.9 4.29 10.29 2.9 12 2.9C13.71 2.9 15.1 4.29 15.1 6V8Z" fill="#8e8e93"/>
+                </svg>
+                <p style="font-size: 16px; color: #ffffff; margin: 0; font-weight: 500;">Zmień PIN do podpisu osobistego</p>
             </div>
-        </div>
-
-        <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
-            <p style="color: #8e8e93; font-size: 13px; margin: 0;">Organ wydający</p>
-            <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">URZĄD MIASTA WARSZAWA</p>
-        </div>
-
-        <div style="border-bottom: 1px solid #2c2c2e; padding: 12px 0;">
-            <p style="color: #8e8e93; font-size: 13px; margin: 0;">Termin ważności</p>
-            <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2035</p>
-        </div>
-
-        <div style="padding-top: 12px;">
-            <p style="color: #8e8e93; font-size: 13px; margin: 0;">Data wydania</p>
-            <p style="color: #ffffff; margin: 4px 0 0 0; font-weight: 600; font-size: 18px;">09.08.2025</p>
-        </div>
-    </div>
-
-<div style="background-color: #1c1c1e; border-radius: 12px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-    <div>
-        <p style="color: #8e8e93; font-size: 13px; margin: 0; font-weight: 500;">Ostatnia aktualizacja</p>
-        <p id="update-date" style="color: #ffffff !important; font-size: 18px; margin: 4px 0 0 0; font-weight: 700;">24.12.2024</p>
-    </div>
-    <button onclick="updateTimestamp()" style="background: #1c3554; color: #0a84ff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; cursor: pointer;">Aktualizuj</button>
-</div>
-
-    <div style="background-color: #1c1c1e; border-radius: 12px; padding: 18px; display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM15.1 8H8.9V6C8.9 4.29 10.29 2.9 12 2.9C13.71 2.9 15.1 4.29 15.1 6V8Z" fill="#8e8e93"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#48484a"/>
             </svg>
-            <p style="font-size: 16px; color: #ffffff; margin: 0; font-weight: 500;">Zmień PIN do podpisu osobistego</p>
         </div>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#48484a"/>
-        </svg>
+
+        <div style="height: 100px;"></div>
     </div>
 
-    <div style="height: 140px;"></div>
-</div>
-    <script src="assets/app/document.js"></script>
-    <script src="assets/app/bar.js"></script>
-</body>
-    <script src="assets/app/manifest.js"></script>
-    <script src="assets/cache.js"></script>
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;f9fc23c135f145f084fe13154a2690c3&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
-<script>
-function updateTimestamp() {
-    // 1. Tworzymy obiekt z aktualnym czasem
-    const teraz = new Date();
+    <div class="bottom_bar_grid">
+        <div class="bottom_element_grid" onclick="window.location.href='documents.html'" style="cursor: pointer;">
+            <div class="bottom_element_image documents_open"></div>
+            <p class="bottom_element_text open" style="font-weight: 600;">Dokumenty</p>
+        </div>
+        <div class="bottom_element_grid" onclick="window.location.href='services.html'" style="cursor: pointer;">
+            <div class="bottom_element_image services"></div>
+            <p class="bottom_element_text" style="font-weight: 600;">Usługi</p>
+        </div>
+        <div class="bottom_element_grid" onclick="window.location.href='qr.html'" style="cursor: pointer;">
+            <div class="bottom_element_image qr"></div>
+            <p class="bottom_element_text" style="font-weight: 600;">Kod QR</p>
+        </div>
+        <div class="bottom_element_grid" onclick="window.location.href='more.html'" style="cursor: pointer;">
+            <div class="bottom_element_image more"></div>
+            <p class="bottom_element_text" style="font-weight: 600;">Więcej</p>
+        </div>
+    </div>
 
-    // 2. Pobieramy dzień, miesiąc i rok
-    // padStart(2, '0') dba o to, by data wyglądała jak "02", a nie "2"
-    const dzien = String(teraz.getDate()).padStart(2, '0');
-    const miesiac = String(teraz.getMonth() + 1).padStart(2, '0');
-    const rok = teraz.getFullYear();
-
-    // 3. Składamy to w całość
-    const pelnaData = dzien + "." + miesiac + "." + rok;
-
-    // 4. Znajdujemy element na stronie i wpisujemy tam nową datę
-    const elementDaty = document.getElementById('update-date');
-    if (elementDaty) {
-        elementDaty.innerText = pelnaData;
+    <script>
+    function updateTimestamp() {
+        const teraz = new Date();
+        const dzien = String(teraz.getDate()).padStart(2, '0');
+        const miesiac = String(teraz.getMonth() + 1).padStart(2, '0');
+        const rok = teraz.getFullYear();
+        const pelnaData = dzien + "." + miesiac + "." + rok;
+        const elementDaty = document.getElementById('update-date');
+        if (elementDaty) {
+            elementDaty.innerText = pelnaData;
+        }
     }
-}
-</script>
-</body></html>
+    </script>
+</body>
+</html>
