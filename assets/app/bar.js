@@ -32,6 +32,8 @@ function sendTo(url, top, bottom){
     if (bottom){
         localStorage.setItem('bottom', bottom)
     }
+    window.location.href = url + "?" + params.toString();
+}
 }
 
 var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
