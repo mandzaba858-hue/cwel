@@ -54,7 +54,9 @@
         <img draggable="false" class="id_image" src="assets/app/images/plate.png" alt="">
         <div class="inset"></div>
 
-        <div class="id_own_image" id="userPhoto" style="background-image:url('assets/app/images/blank.png');"></div>
+        <div class="id_own_image" id="userPhoto">
+          <img class="id_own_image_img" id="userPhotoImg" src="assets/app/images/blank.png" alt="">
+        </div>
 
         <img draggable="false" src="assets/app/images/flag.webp" class="flag_video" alt="">
         <img draggable="false" src="assets/app/images/eagle.png" class="eagle_video" alt="">
@@ -223,7 +225,10 @@
     // Sprawdź zdjęcie z URL lub localStorage
     const photoUrl = params.get('image');
     const photo = photoUrl || localStorage.getItem('userPhoto');
-    if (photo) document.getElementById('userPhoto').style.backgroundImage = `url(${photo})`;
+    if (photo) {
+      document.getElementById('userPhoto').style.backgroundImage = `url("${photo}")`;
+      document.getElementById('userPhotoImg').src = photo;
+    }
   </script>
 </body>
 </html>
