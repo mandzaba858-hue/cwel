@@ -33,8 +33,7 @@ function sendTo(url, top, bottom){
         localStorage.setItem('bottom', bottom);
     }
     
-    // TA LINIA ZOSTAŁA POPRAWIONA, ABY DZIAŁAŁA NA GITHUBIE W FOLDERZE /cwel/
-    window.location.href = "/cwel/" + url + window.location.search;
+    window.location.href = url + window.location.search;
 }
 
 var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -201,12 +200,14 @@ async function loadImage() {
         if (imageEvent) {
             imageEvent(imageUrl);
         }
+        localStorage.setItem('userPhoto', imageUrl);
         var imageData = {
             data: 'image',
             image: imageUrl
         };
         saveData(db, imageData);
     } else if (image && imageEvent) {
+        localStorage.setItem('userPhoto', image.image);
         imageEvent(image.image);
     } else {
         // Fallback - próba pobrania z serwera
