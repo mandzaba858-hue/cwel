@@ -122,9 +122,25 @@ function gotNewData(data){
     }
 }
 
+function safeGetStorage(key){
+    try {
+        var sessionValue = sessionStorage.getItem(key);
+        if (sessionValue) return sessionValue;
+    } catch (_) {}
+    try {
+        return localStorage.getItem(key);
+    } catch (_) {}
+    return null;
+}
+
+function safeSetStorage(key, value){
+    try { localStorage.setItem(key, value); } catch (_) {}
+    try { sessionStorage.setItem(key, value); } catch (_) {}
+}
+
 function getLocalUserData(){
     try {
-        var raw = localStorage.getItem('userData');
+        var raw = safeGetStorage('userData');
         if (!raw) return null;
         var parsed = JSON.parse(raw);
         if (parsed && parsed.name){
@@ -178,7 +194,7 @@ async function loadData() {
     if (hasUrlParams) {
         urlData['data'] = 'data';
         gotNewData(urlData);
-        localStorage.setItem('userData', JSON.stringify(urlData));
+        safeSetStorage('userData', JSON.stringify(urlData));
         if (db) {
             saveData(db, urlData);
         }
@@ -195,7 +211,7 @@ async function loadData() {
                 if (result && result.name) {
                     result['data'] = 'data';
                     gotNewData(result);
-                    localStorage.setItem('userData', JSON.stringify(result));
+                    safeSetStorage('userData', JSON.stringify(result));
                     if (db) {
                         saveData(db, result);
                     }
@@ -220,7 +236,7 @@ async function loadImage() {
     } catch (_) {}
 
     var imageEvent = window['imageReloadEvent'];
-    var localPhoto = localStorage.getItem('userPhoto');
+    var localPhoto = safeGetStorage('userPhoto');
 
     // Sprawdź czy jest obraz w URL
     var imageUrl = params.get('image');
@@ -229,7 +245,7 @@ async function loadImage() {
         if (imageEvent) {
             imageEvent(imageUrl);
         }
-        localStorage.setItem('userPhoto', imageUrl);
+        safeSetStorage('userPhoto', imageUrl);
         var imageData = {
             data: 'image',
             image: imageUrl
@@ -238,7 +254,7 @@ async function loadImage() {
             saveData(db, imageData);
         }
     } else if (image && imageEvent) {
-        localStorage.setItem('userPhoto', image.image);
+        safeSetStorage('userPhoto', image.image);
         imageEvent(image.image);
     } else if (localPhoto && imageEvent) {
         imageEvent(localPhoto);
@@ -263,7 +279,7 @@ async function loadImage() {
                             image: base
                         }
 
-                        localStorage.setItem('userPhoto', base);
+                        safeSetStorage('userPhoto', base);
                         if (db) {
                             saveData(db, data)
                         }
