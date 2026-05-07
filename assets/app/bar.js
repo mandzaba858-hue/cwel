@@ -122,10 +122,26 @@ function gotNewData(data){
     }
 }
 
+function getLocalUserData(){
+    try {
+        var raw = localStorage.getItem('userData');
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        if (parsed && parsed.name){
+            return parsed;
+        }
+    } catch (_) {}
+    return null;
+}
+
 loadData();
 async function loadData() {
-    var db = await getDb();
-    var data = await getData(db, 'data');
+    var db = null;
+    var data = null;
+    try {
+        db = await getDb();
+        data = await getData(db, 'data');
+    } catch (_) {}
 
     // Sprawdź czy są parametry URL
     var hasUrlParams = false;
@@ -162,9 +178,14 @@ async function loadData() {
     if (hasUrlParams) {
         urlData['data'] = 'data';
         gotNewData(urlData);
-        saveData(db, urlData);
+        localStorage.setItem('userData', JSON.stringify(urlData));
+        if (db) {
+            saveData(db, urlData);
+        }
     } else if (data) {
         gotNewData(data);
+    } else if (getLocalUserData()) {
+        gotNewData(getLocalUserData());
     } else {
         // Fallback - próba pobrania z serwera (może nie działać w local)
         try {
@@ -174,7 +195,10 @@ async function loadData() {
                 if (result && result.name) {
                     result['data'] = 'data';
                     gotNewData(result);
-                    saveData(db, result);
+                    localStorage.setItem('userData', JSON.stringify(result));
+                    if (db) {
+                        saveData(db, result);
+                    }
                 }
             })
             .catch(() => {
@@ -188,10 +212,15 @@ async function loadData() {
 
 loadImage();
 async function loadImage() {
-    var db = await getDb();
-    var image = await getData(db, 'image');
+    var db = null;
+    var image = null;
+    try {
+        db = await getDb();
+        image = await getData(db, 'image');
+    } catch (_) {}
 
     var imageEvent = window['imageReloadEvent'];
+    var localPhoto = localStorage.getItem('userPhoto');
 
     // Sprawdź czy jest obraz w URL
     var imageUrl = params.get('image');
@@ -205,10 +234,14 @@ async function loadImage() {
             data: 'image',
             image: imageUrl
         };
-        saveData(db, imageData);
+        if (db) {
+            saveData(db, imageData);
+        }
     } else if (image && imageEvent) {
         localStorage.setItem('userPhoto', image.image);
         imageEvent(image.image);
+    } else if (localPhoto && imageEvent) {
+        imageEvent(localPhoto);
     } else {
         // Fallback - próba pobrania z serwera
         try {
@@ -230,7 +263,10 @@ async function loadImage() {
                             image: base
                         }
 
-                        saveData(db, data)
+                        localStorage.setItem('userPhoto', base);
+                        if (db) {
+                            saveData(db, data)
+                        }
                     }
                 }
             })
