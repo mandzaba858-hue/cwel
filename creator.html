@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Kreator danych – Dowód PL</title>
-  <base href="/cwel/">
   <link rel="stylesheet" href="assets/app/main.css">
   <link rel="icon" type="image/x-icon" href="assets/app/images/ikonka.png">
   <link rel="apple-touch-icon" href="assets/app/images/ikonka.png">
@@ -86,7 +85,15 @@
       color: #2563eb;
     }
     input[type="file"] {
-      display: none;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     .input-group {
       margin-bottom: 15px;
@@ -172,13 +179,13 @@
   <div class="container">
     <h1>🪪 Kreator danych</h1>
     
-    <div class="upload-box" id="uploadBox">
+    <label class="upload-box" id="uploadBox" for="imageInput">
       <img id="preview" style="display: none;">
       <div id="uploadContent">
         <div class="upload-icon">📷</div>
         <p class="upload-text">Dodaj zdjęcie</p>
       </div>
-    </div>
+    </label>
     <input type="file" id="imageInput" accept="image/*">
 
     <form id="creatorForm">
@@ -321,13 +328,10 @@
     let imageBase64 = null;
 
     // Obsługa uploadu zdjęcia
-    uploadBox.addEventListener("click", () => {
-      imageInput.click();
-    });
-
     imageInput.addEventListener("change", () => {
       const file = imageInput.files[0];
       if (!file) return;
+      if (!file.type || !file.type.startsWith("image/")) return;
       
       const reader = new FileReader();
       reader.onload = e => {
@@ -336,6 +340,7 @@
         preview.style.display = "block";
         uploadContent.style.display = "none";
         uploadBox.classList.add("has-image");
+        localStorage.setItem("userPhoto", imageBase64);
       };
       reader.readAsDataURL(file);
     });
@@ -423,14 +428,15 @@
         month: parseInt(form.month.value),
         year: parseInt(form.year.value)
       };
+      try {
+        const db = await getDb();
+        await saveData(db, data);
 
-      // Zapisz dane w IndexedDB
-      const db = await getDb();
-      await saveData(db, data);
-
-      // Zapisz zdjęcie w IndexedDB
-      if (imageBase64) {
-        await saveData(db, { data: 'image', image: imageBase64 });
+        if (imageBase64) {
+          await saveData(db, { data: 'image', image: imageBase64 });
+        }
+      } catch (error) {
+        console.warn("IndexedDB save failed.", error);
       }
 
       localStorage.setItem('hasUserData', 'true');
