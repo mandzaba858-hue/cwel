@@ -112,7 +112,11 @@ function loadReadyData(result){
 }
 
 function setImage(image){
-    document.querySelector(".id_own_image").style.backgroundImage = `url(${image})`;
+    document.querySelector(".id_own_image").style.backgroundImage = `url("${image}")`;
+    var img = document.getElementById("userPhotoImg");
+    if (img){
+        img.src = image;
+    }
 }
 
 function setData(id, value){
