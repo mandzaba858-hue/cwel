@@ -209,6 +209,17 @@
   <script src="assets/app/cache.js"></script>
 
   <script>
+    function safeGetStorage(key) {
+      try {
+        const sessionValue = sessionStorage.getItem(key);
+        if (sessionValue) return sessionValue;
+      } catch (_) {}
+      try {
+        return localStorage.getItem(key);
+      } catch (_) {}
+      return null;
+    }
+
     // === Wczytywanie danych z localStorage lub URL ===
     const fields = [
       'name','surname','nationality','birthday','pesel_value','seriesAndNumber','expiryDate',
@@ -219,12 +230,12 @@
     fields.forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
-      let value = params.get(id) || localStorage.getItem(id);
+      let value = params.get(id) || safeGetStorage(id);
       if (value) el.textContent = value;
     });
     // Sprawdź zdjęcie z URL lub localStorage
     const photoUrl = params.get('image');
-    const photo = photoUrl || localStorage.getItem('userPhoto');
+    const photo = photoUrl || safeGetStorage('userPhoto');
     if (photo) {
       document.getElementById('userPhoto').style.backgroundImage = `url("${photo}")`;
       document.getElementById('userPhotoImg').src = photo;
