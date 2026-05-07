@@ -266,6 +266,15 @@ body .bottom_bar{
     filter: grayscale(100%);
 }
 
+.id_own_image_img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 5px;
+    filter: grayscale(100%);
+}
+
 .action_arrow{
     position: absolute;
     top: 0;
