@@ -34,12 +34,6 @@
     </div>
 
     <section class="scan-stage">
-      <div class="scan-notice" id="scanNotice">
-        <div class="scan-notice-icon">i</div>
-        <p>Kod powinien byc dobrze oswietlony i caly widoczny w kadrze.</p>
-        <button type="button" class="notice-close" aria-label="Zamknij">Zamknij</button>
-      </div>
-
       <div id="reader" aria-label="Podglad z kamery"></div>
 
       <div class="scan-overlay" aria-hidden="true">
@@ -60,7 +54,6 @@
     </section>
 
     <div class="scanner-actions">
-      <button type="button" class="primary-btn" id="restartScannerBtn">Uruchom ponownie aparat</button>
       <button type="button" class="ghost-btn manual-input">Wpisz kod recznie</button>
     </div>
   </div>
@@ -119,9 +112,7 @@
   <script src="assets/app/manifest.js"></script>
   <script src="assets/app/cache.js"></script>
   <script>
-    const scanNotice = document.getElementById("scanNotice");
     const scannerPlaceholder = document.getElementById("scannerPlaceholder");
-    const restartScannerBtn = document.getElementById("restartScannerBtn");
     const backLabel = document.getElementById("backLabel");
 
     const statusSheet = document.getElementById("statusSheet");
@@ -139,16 +130,6 @@
     if (localStorage.getItem("top") === "card.html" || localStorage.getItem("top") === "card") {
       backLabel.textContent = "mDowod";
     }
-
-    document.querySelector(".notice-close")?.addEventListener("click", () => {
-      scanNotice.classList.add("hidden");
-    });
-
-    restartScannerBtn.addEventListener("click", async () => {
-      hideStatusSheet();
-      await stopScanner();
-      startScanner();
-    });
 
     document.querySelector(".manual-input").addEventListener("click", () => {
       document.querySelector(".code-input-container").classList.add("active");
@@ -219,7 +200,6 @@
       scannerPlaceholder.classList.add("visible");
       scannerPlaceholder.querySelector(".placeholder-title").textContent = "Przygotowuje aparat";
       scannerPlaceholder.querySelector(".placeholder-copy").textContent = "Za chwile otworzymy widok kamery w tej karcie.";
-      restartScannerBtn.disabled = true;
 
       try {
         if (location.protocol !== "https:" && location.hostname !== "localhost") {
@@ -286,7 +266,6 @@
           bindDefaultStatusActions();
         };
       } finally {
-        restartScannerBtn.disabled = false;
       }
     }
 
