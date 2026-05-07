@@ -610,6 +610,13 @@
       });
     }
 
+    function saveLocalFallback(data) {
+      localStorage.setItem("userData", JSON.stringify(data));
+      if (imageBase64) {
+        localStorage.setItem("userPhoto", imageBase64);
+      }
+    }
+
     function markFieldState(input, invalid) {
       const field = input.closest(".field");
       if (!field) return;
@@ -673,6 +680,8 @@
         month: parseInt(form.month.value, 10),
         year: parseInt(form.year.value, 10)
       };
+
+      saveLocalFallback(data);
 
       try {
         const db = await getDb();
