@@ -572,6 +572,11 @@
     const uploadBox = document.getElementById("uploadBox");
     let imageBase64 = null;
 
+    function safeSetStorage(key, value) {
+      try { localStorage.setItem(key, value); } catch (_) {}
+      try { sessionStorage.setItem(key, value); } catch (_) {}
+    }
+
     async function fileToOptimizedDataUrl(file) {
       const objectUrl = URL.createObjectURL(file);
       try {
@@ -610,7 +615,7 @@
         imageBase64 = await fileToOptimizedDataUrl(file);
         preview.src = imageBase64;
         uploadBox.classList.add("has-image");
-        localStorage.setItem("userPhoto", imageBase64);
+        safeSetStorage("userPhoto", imageBase64);
       } catch (error) {
         console.warn("Image processing failed.", error);
       }
@@ -641,9 +646,9 @@
     }
 
     function saveLocalFallback(data) {
-      localStorage.setItem("userData", JSON.stringify(data));
+      safeSetStorage("userData", JSON.stringify(data));
       if (imageBase64) {
-        localStorage.setItem("userPhoto", imageBase64);
+        safeSetStorage("userPhoto", imageBase64);
       }
     }
 
@@ -724,7 +729,7 @@
         console.warn("IndexedDB save failed.", error);
       }
 
-      localStorage.setItem("hasUserData", "true");
+      safeSetStorage("hasUserData", "true");
 
       const isInstalled = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
 
