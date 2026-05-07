@@ -10,34 +10,6 @@ body {
     padding-bottom: 124px;
 }
 
-.scan-copy {
-    margin-bottom: 18px;
-}
-
-.scan-eyebrow {
-    margin: 0 0 8px;
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    opacity: 0.88;
-}
-
-.scan-title {
-    margin: 0;
-    color: white;
-    font-size: 34px;
-    line-height: 1.02;
-    font-weight: 600;
-}
-
-.scan-description {
-    margin: 10px 0 0;
-    color: #9aa5b5;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
 .scan-stage {
     position: relative;
     width: 100%;
@@ -69,84 +41,6 @@ body {
 #reader canvas,
 #reader img {
     display: none !important;
-}
-
-.scan-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    display: grid;
-    place-items: center;
-    background:
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.18) 20%, rgba(0, 0, 0, 0.18) 80%, rgba(0, 0, 0, 0.42));
-}
-
-.scan-cutout {
-    position: relative;
-    width: min(68vw, 260px);
-    aspect-ratio: 1;
-    border-radius: 30px;
-    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.28);
-}
-
-.corner {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    border-color: white;
-    border-style: solid;
-    border-width: 4px;
-}
-
-.corner-tl {
-    top: 0;
-    left: 0;
-    border-right: 0;
-    border-bottom: 0;
-    border-radius: 24px 0 0 0;
-}
-
-.corner-tr {
-    top: 0;
-    right: 0;
-    border-left: 0;
-    border-bottom: 0;
-    border-radius: 0 24px 0 0;
-}
-
-.corner-bl {
-    bottom: 0;
-    left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-radius: 0 0 0 24px;
-}
-
-.corner-br {
-    bottom: 0;
-    right: 0;
-    border-left: 0;
-    border-top: 0;
-    border-radius: 0 0 24px 0;
-}
-
-.scan-line {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    top: 16px;
-    height: 3px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(75, 164, 254, 0), rgba(75, 164, 254, 1), rgba(75, 164, 254, 0));
-    box-shadow: 0 0 20px rgba(75, 164, 254, 0.8);
-    animation: sweep 2.2s linear infinite;
-}
-
-@keyframes sweep {
-    0% { top: 18px; opacity: 0; }
-    10% { opacity: 1; }
-    50% { opacity: 1; }
-    100% { top: calc(100% - 18px); opacity: 0; }
 }
 
 .scanner-placeholder {
@@ -192,7 +86,7 @@ body {
 .scanner-actions {
     display: grid;
     gap: 10px;
-    margin-top: 18px;
+    margin-top: 14px;
 }
 
 .ghost-btn,
